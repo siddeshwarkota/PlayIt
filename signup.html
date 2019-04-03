@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>REGISTER FORM</title>
+<link rel="stylesheet" type="text/css" href="signup.css">
+<script>
+function validation()
+{
+    var name = document.forms["register"]["name"];
+    var email = document.forms["register"]["email"];
+    var phone = document.forms["register"]["phone"];
+    var password = document.forms["register"]["password"];
+    var repassword = document.forms["register"]["repassword"];
+
+    if (name.value == "")
+    {
+        window.alert("Please enter your name.");
+        name.focus();
+        return false;
+    }
+
+    if (email.value == "")
+    {
+        window.alert("Please enter a valid e-mail address.");
+        email.focus();
+        return false;
+    }
+
+    if (email.value.indexOf("@", 0) < 0)
+    {
+        window.alert("Please enter a valid e-mail address.");
+        email.focus();
+        return false;
+    }
+
+    if (email.value.indexOf(".", 0) < 0)
+    {
+        window.alert("Please enter a valid e-mail address.");
+        email.focus();
+        return false;
+    }
+
+    if (phone.value == "")
+    {
+        window.alert("Please enter your phone number.");
+        phone.focus();
+        return false;
+    }
+    if(isNaN(phone.value))
+    {
+      window.alert("enter a number");
+      phone.focus();
+      return false;
+    }
+    /*if(phone.value.length<=10)
+    {
+      window.alert("enter atleast 10 numbers");
+      phone.focus();
+      return false;
+    }*/
+    if(!(password.value == repassword.value))
+    {
+      window.alert("passwords not maching");
+      password.focus();
+      repassword.focus();
+      return false;
+    }
+    if(password.value == "")
+    {
+      window.alert("please enter the password");
+      password.focus();
+      return false;
+    }
+    if(password.length<=10)
+    {
+      window.alert("please enter a password of atleast 10 characters")
+      password.focus();
+      return false;
+    }
+    re=/[0-9]/;
+    if(!re.test(password.value))
+    {
+      window.alert("please enter atleast one number");
+      password.focus();
+      return false;
+    }
+    re=/[a-z]/;
+    if(!re.test(password.value))
+    {
+      window.alert("please enter atleast one lowercase letter");
+      password.focus();
+      return false;
+    }
+    re=/[A-Z]/;
+    if(!re.test(password.value))
+    {
+      window.alert("please enter atleast one uppercase letter");
+      password.focus();
+      return false;
+    }
+
+    return true;
+  }
+	</script>
+</head>
+<body class="sbody">
+<h1 align="center">REGISTRATION FORM</h1>
+<hr>
+<div class="sdiv">
+<form align="center" border="1" name="register" onsubmit="return validation()" method="post" action="signup.php"><br>
+	Name  :  <input type="text" class="sinput" name="name" placeholder="enter your name"><br><br>
+	E-MAIL: <input type="email" class="sinput" name="email" placeholder="enter your email"><br><br>
+	PHONE : <input type="tel" class="sinput" name="phone" placeholder="enter your mobile number" ><br><br>
+	PASSWORD: <input type="password" class="sinput" name="password" placeholder="Enter your password" >
+   <input type="password" class="sinput" name="repassword" placeholder="Re-enter password"><br><br>
+	<button type="submit" class="sbutton" name="submit" value="submit">SUBMIT</button>
+   <button type="reset" class="sbutton" name="reset" value="reset">RESET</button><br>
+	 <br>
+	 <a href="login.html" target="_blank">Exsisting User ? Click Here to Login </a>
+</form>
+<br>
+</div>
+</body>
+</html>
